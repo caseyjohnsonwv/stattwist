@@ -8,7 +8,7 @@
 // import axios from 'axios';
 
 export default {
-  name: 'Home',
+  name: 'Dashboard',
   data() {
     return {
       msg: 'Welcome',

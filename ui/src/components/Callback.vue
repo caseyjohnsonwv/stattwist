@@ -23,7 +23,7 @@ export default {
         this.$cookie.set('access_token', res.data.access_token, { expires: '1h' });
         this.$cookie.set('access_token_secret', res.data.access_token_secret, { expires: '1h' });
         this.$session.remove('request_token');
-        this.$router.push({ name: 'Home' });
+        this.$router.push({ name: 'Dashboard' });
       });
     },
   },

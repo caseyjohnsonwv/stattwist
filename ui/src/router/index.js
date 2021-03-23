@@ -15,9 +15,9 @@ const routes = [
     component: () => import('../components/Callback.vue'),
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: () => import('../components/Home.vue'),
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import('../components/Dashboard.vue'),
   },
 ];
 
