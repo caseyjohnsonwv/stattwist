@@ -1,0 +1,5 @@
+.env
+env.py
+env.pyc
+__pycache__
+.mongo
