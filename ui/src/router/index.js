@@ -19,6 +19,11 @@ const routes = [
     name: 'Dashboard',
     component: () => import('../components/Dashboard.vue'),
   },
+  {
+    path: '*',
+    name: 'Error',
+    component: () => import('../components/PageNotFound.vue'),
+  },
 ];
 
 const router = new VueRouter({

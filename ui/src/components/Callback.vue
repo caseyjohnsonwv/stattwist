@@ -1,6 +1,6 @@
 <template>
   <div style="margin: 30px 10px;">
-    <p class="text-center">Redirecting...</p>
+    <p class="text-center">{{ message }}</p>
   </div>
 </template>
 
@@ -10,7 +10,9 @@ import axios from 'axios';
 export default {
   name: 'Callback',
   data() {
-    return {};
+    return {
+      message: '',
+    };
   },
   methods: {
     completeOAuth() {
@@ -23,7 +25,10 @@ export default {
         this.$cookie.set('access_token', res.data.access_token, { expires: '12h' });
         this.$cookie.set('access_token_secret', res.data.access_token_secret, { expires: '12h' });
         this.$session.remove('request_token');
+        this.message = 'Redirecting...';
         this.$router.push({ name: 'Dashboard' });
+      }).catch(() => {
+        this.$router.push({ name: 'Landing' });
       });
     },
   },

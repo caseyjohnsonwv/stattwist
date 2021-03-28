@@ -2,7 +2,7 @@
   <div class="container d-flex justify-content-center">
     <div class="row text-center align-items-center" style="height:100vh;">
       <div class="col">
-        <img src="../../assets/tornado.png" style="width:50%;">
+        <img src="../../assets/tornado.png" style="width:150px;">
         <h1 style="margin: 10px 0px 30px 0px;">StatTwist</h1>
         <button v-on:click="initiateOAuth" type="button" class="btn btn-large btn-primary">
           <p style="margin: auto; padding: 5px; font-weight: bold;">
@@ -10,7 +10,7 @@
           </p>
         </button>
         <p style="margin: 30px 0px 10px 0px">
-          Made <a href="http://github.com/caseyjohnsonwv/stattwist" target="_blank">with love</a> in Pittsburgh.
+          Made <a href="http://twitter.com/caseyjohnsonwv" target="_blank">with love</a> in Pittsburgh.
         </p>
       </div>
     </div>
