@@ -28,7 +28,7 @@ export default {
         this.message = 'Redirecting...';
         this.$router.push({ name: 'Dashboard' });
       }).catch(() => {
-        this.$router.push({ name: 'Landing' });
+        this.$router.push({ name: 'PageNotFound' });
       });
     },
   },

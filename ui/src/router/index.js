@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: '*',
-    name: 'Error',
+    name: 'PageNotFound',
     component: () => import('../components/PageNotFound.vue'),
   },
 ];
