@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <p>Working...</p>
+  <div style="margin: 30px 10px;">
+    <p class="text-center">Redirecting...</p>
   </div>
 </template>
 
@@ -20,8 +20,8 @@ export default {
       axios.post(path, {
         request_token, verifier,
       }).then((res) => {
-        this.$cookie.set('access_token', res.data.access_token, { expires: '1h' });
-        this.$cookie.set('access_token_secret', res.data.access_token_secret, { expires: '1h' });
+        this.$cookie.set('access_token', res.data.access_token, { expires: '12h' });
+        this.$cookie.set('access_token_secret', res.data.access_token_secret, { expires: '12h' });
         this.$session.remove('request_token');
         this.$router.push({ name: 'Dashboard' });
       });
