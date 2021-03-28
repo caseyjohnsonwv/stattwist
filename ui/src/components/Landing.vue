@@ -10,7 +10,7 @@
           </p>
         </button>
         <p style="margin: 30px 0px 10px 0px">
-          Made <a href="http://twitter.com/caseyjohnsonwv" target="_blank">with love</a> in Pittsburgh.
+          Made <a href="http://github.com/caseyjohnsonwv/stattwist" target="_blank">with love</a> in Pittsburgh.
         </p>
       </div>
     </div>

@@ -1,36 +1,52 @@
 <template>
   <div style="margin: 30px 10px;">
     <div v-if="pending">
-      <div class="d-flex justify-content-center">
-        <div class="spinner-border text-primary" style="height: 5em; width: 5em;" role="status">
+      <div class="container d-flex justify-content-center" style="height:100vh;">
+        <div class="row text-center align-items-center">
+          <div class="col">
+            <div class="spinner-border text-primary" style="height: 5vh; width: 5vh;" role="status">
+            </div>
+            <h1 style="margin: 30px 0px 10px 0px;">Fetching tweets...</h1>
+            <p>{{ loadMessages[0] }}</p>
+          </div>
         </div>
-      </div>
-      <div class="d-flex justify-content-center text-center" style="margin: 30px 0px 10px 0px;">
-        <h3>Fetching tweets...</h3>
-      </div>
-      <div class="d-flex justify-content-center text-center">
-        <p>{{ loadMessages[0] }}</p>
       </div>
     </div>
     <div v-else>
-      <div class="container text-center">
-        <div class="row justify-content-center">
-          <div v-on:click="swapTweets('retweets')" class="col btn .btn-block">
-            <h1 v-bind:class="display === 'retweets' ? 'text-primary' : ''">RTs</h1>
+      <div class="container d-flex justify-content-center" style="margin-bottom: 10px;">
+        <h1 style=" font-weight: bold;">Your Top Tweets</h1>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="row text-center align-items-center">
+          <div class="col" style="width: 30%;">
+            <button type="button" class="btn" v-on:click="swapTweets('retweets')"
+                    v-bind:class="display === 'retweets' ? 'btn-primary' : 'btn-link'"
+                    style="height:40px; width: 150px;">
+              <font-awesome-icon icon="retweet" aria-hidden="true"/>
+              <span style="font-weight:bold;"> Retweets</span>
+            </button>
           </div>
-          <div v-on:click="swapTweets('likes')" class="col btn .btn-block">
-            <h1 v-bind:class="display === 'likes' ? 'text-primary' : ''">Likes</h1>
+          <div class="col">
+            <button type="button" class="btn" v-on:click="swapTweets('likes')"
+                    v-bind:class="display === 'likes' ? 'btn-primary' : 'btn-link'"
+                    style="height:40px; width: 150px;">
+              <font-awesome-icon icon="heart" aria-hidden="true"/>
+              <span style="font-weight:bold;"> Likes</span>
+            </button>
           </div>
         </div>
       </div>
-      <Tweet v-for="id in tweetIds"
-             v-bind:key="id"
-             v-bind:id="id"
-             v-bind:options="{ align: 'center' }">
-      <div class="d-flex justify-content-center" style="margin: 10px 0px;">
-        <div class="spinner-border text-primary" role="status"></div>
+      <div class="container">
+        <Tweet v-for="id in tweetIds"
+               v-bind:key="id"
+               v-bind:id="id"
+               v-bind:options="{ align: 'center' }">
+        <div class="d-flex justify-content-center" style="margin: 10px 0px;">
+          <div class="spinner-border text-primary" style="height: 5vh; width: 5vh;" role="status">
+          </div>
+        </div>
+        </Tweet>
       </div>
-      </Tweet>
     </div>
   </div>
 </template>
@@ -84,8 +100,8 @@ export default {
         : JSON.parse(this.$cookie.get('most_liked_ids'));
       this.pending = false;
     },
-    async swapTweets() {
-      this.display = this.display === 'retweets' ? 'likes' : 'retweets';
+    async swapTweets(type) {
+      this.display = type;
       await this.renderTweets(this.display);
     },
     updateLoadMessage() {
@@ -94,7 +110,6 @@ export default {
     },
   },
   async created() {
-    this.updateLoadMessage();
     await this.getTweetIds();
     await this.renderTweets('retweets');
   },
