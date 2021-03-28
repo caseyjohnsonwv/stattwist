@@ -1,8 +1,19 @@
 <template>
-  <div class="container">
-    <button v-on:click="initiateOAuth" type="button" class="btn btn-primary">
-      Login with Twitter
-    </button>
+  <div class="container d-flex justify-content-center">
+    <div class="row text-center align-items-center" style="height:100vh;">
+      <div class="col">
+        <img src="../../assets/tornado.png" style="width:50%;">
+        <h1 style="margin: 10px 0px 30px 0px;">StatTwist</h1>
+        <button v-on:click="initiateOAuth" type="button" class="btn btn-large btn-primary">
+          <p style="margin: auto; padding: 5px; font-weight: bold;">
+            Login with Twitter
+          </p>
+        </button>
+        <p style="margin: 30px 0px 10px 0px">
+          Made <a href="http://twitter.com/caseyjohnsonwv" target="_blank">with love</a> in Pittsburgh.
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
