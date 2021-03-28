@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     goHome() {
-      this.$router.push({ name: 'Landing' });
+      this.$router.push({ name: 'Dashboard' });
     },
   },
 };
