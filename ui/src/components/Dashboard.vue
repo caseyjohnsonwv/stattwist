@@ -13,9 +13,15 @@
       </div>
     </div>
     <div v-else>
-      <div class="container d-flex justify-content-center" style="margin-bottom: 10px;">
-        <h1 style=" font-weight: bold;">Your Top Tweets</h1>
+      <div class="container d-flex justify-content-center">
+        <div class="row text-center">
+          <div class="col text-dark">
+            <h1 style="font-weight: bold; margin-bottom: 0px;">Your Top Tweets</h1>
+            <p>from the last 365 days.</p>
+          </div>
+        </div>
       </div>
+      <hr style="margin: 0 auto 20px auto; width: 80%; border-color: #ccc;"/>
       <div class="d-flex justify-content-center">
         <div class="row text-center align-items-center">
           <div class="col" style="width: 30%;">
@@ -41,11 +47,33 @@
                v-bind:key="id"
                v-bind:id="id"
                v-bind:options="{ align: 'center' }">
-        <div class="d-flex justify-content-center" style="margin: 10px 0px;">
-          <div class="spinner-border text-primary" style="height: 5vh; width: 5vh;" role="status">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border text-primary" role="status"
+               style="height: 5vh; width: 5vh; margin-top: 20px;">
           </div>
         </div>
         </Tweet>
+      </div>
+      <hr style="margin: 20px auto; width: 80%; border-color: #ccc;"/>
+      <div class="d-flex justify-content-center" style="font-size:16px;">
+        <div class="row align-items-center align-middle"
+             style="width: 100%; margin: auto;">
+          <div class="col text-right" style="border-right: 1px solid #ccc;">
+            <a href="http://github.com/caseyjohnsonwv/stattwist" target="_blank"
+               class="text-dark">
+              <font-awesome-icon v-bind:icon="['fab', 'github']"/>
+              <span style="margin: 0px 10px;">StatTwist</span>
+              <img src="../../assets/tornado.png" style="height:1em;">
+            </a>
+          </div>
+          <div class="col text-left" style="border-left: 1px solid #ccc;">
+            <a href="http://twitter.com/caseyjohnsonwv/" target="_blank"
+               class="text-dark">
+              <span style="margin-right: 10px;">Casey J</span>
+              <font-awesome-icon v-bind:icon=" ['fab', 'twitter']" class="text-primary"/>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
