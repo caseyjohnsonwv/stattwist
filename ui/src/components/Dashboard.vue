@@ -6,14 +6,23 @@
         </div>
       </div>
       <div class="d-flex justify-content-center text-center" style="margin: 30px 0px 10px 0px;">
-        <h3>Fetching tweets... this may take a moment.</h3>
+        <h3>Fetching tweets...</h3>
       </div>
       <div class="d-flex justify-content-center text-center">
-        <p>This page will automatically refresh.</p>
+        <p>{{ loadMessages[0] }}</p>
       </div>
     </div>
     <div v-else>
-      <h1 class="text-center">Your Top Tweets</h1>
+      <div class="container text-center">
+        <div class="row justify-content-center">
+          <div v-on:click="swapTweets('retweets')" class="col btn .btn-block">
+            <h1 v-bind:class="display === 'retweets' ? 'text-primary' : ''">RTs</h1>
+          </div>
+          <div v-on:click="swapTweets('likes')" class="col btn .btn-block">
+            <h1 v-bind:class="display === 'likes' ? 'text-primary' : ''">Likes</h1>
+          </div>
+        </div>
+      </div>
       <Tweet v-for="id in tweetIds"
              v-bind:key="id"
              v-bind:id="id"
@@ -38,9 +47,18 @@ export default {
   data() {
     return {
       pending: true,
+      loadMessages: [
+        'This page will automatically refresh.',
+        'Almost there - thanks for waiting.',
+      ],
       display: '',
       tweetIds: [],
     };
+  },
+  mounted() {
+    window.setInterval(() => {
+      this.updateLoadMessage();
+    }, 10000);
   },
   methods: {
     async getTweetIds() {
@@ -67,10 +85,16 @@ export default {
       this.pending = false;
     },
     async swapTweets() {
-      return true;
+      this.display = this.display === 'retweets' ? 'likes' : 'retweets';
+      await this.renderTweets(this.display);
+    },
+    updateLoadMessage() {
+      const first = this.loadMessages.shift();
+      this.loadMessages = this.loadMessages.concat(first);
     },
   },
   async created() {
+    this.updateLoadMessage();
     await this.getTweetIds();
     await this.renderTweets('retweets');
   },
