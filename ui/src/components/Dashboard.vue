@@ -93,6 +93,7 @@ export default {
       pending: true,
       loadMessages: [
         'This page will automatically refresh.',
+        'First time loading may take a minute.',
         'Almost there - thanks for waiting.',
       ],
       display: '',
